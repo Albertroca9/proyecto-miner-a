@@ -45,3 +45,4 @@ st.dataframe(
     width="stretch",
 )
 st.caption("No se mide calidad ni disponibilidad. Los precios son los del archivo facilitado y pueden haber cambiado.")
+
