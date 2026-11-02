@@ -1,0 +1,42 @@
+{
+  "snapshot_rows": 4403,
+  "history_rows": 167787,
+  "eligible_snapshot_chat": 3082,
+  "eligible_history_chat": 139874,
+  "history_weeks": 157,
+  "first_week": "2023-09-18",
+  "last_week": "2026-09-28",
+  "first_week_listings": 41,
+  "last_week_listings": 3082,
+  "first_week_median_input_usd": 1.875,
+  "last_week_median_input_usd": 0.6,
+  "first_week_median_output_usd": 4.0,
+  "last_week_median_output_usd": 1.8,
+  "input_price_changes": {
+    "comparisons": 136118,
+    "changes": 573,
+    "decreases": 332,
+    "increases": 241,
+    "models_changed": 442
+  },
+  "output_price_changes": {
+    "comparisons": 136118,
+    "changes": 552,
+    "decreases": 319,
+    "increases": 233,
+    "models_changed": 428
+  },
+  "country_counts": {
+    "USA": 1642,
+    "China": 1060,
+    "France": 196,
+    "Unknown": 127,
+    "Canada": 29,
+    "Israel": 18,
+    "Japan": 4,
+    "Germany": 3,
+    "South Korea": 3
+  },
+  "missing_current_input_pct": 17.05655235067,
+  "missing_current_output_pct": 17.351805587099705
+}

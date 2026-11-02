@@ -1,0 +1,11 @@
+model_id,model_name,provider,max_input_tokens,estimated_cost_usd
+lambda_ai/llama3.2-11b-vision-instruct,llama3.2-11b-vision-instruct,lambda_ai,131072.0,0.021249999999999998
+nebius/Qwen/Qwen2-VL-7B-Instruct,Qwen2-VL-7B-Instruct,nebius,131072.0,0.035
+openrouter/inclusionai/ling-3.0-flash-vl,ling-3.0-flash-vl,openrouter,262144.0,0.0364
+llamagate/gemma3-4b,gemma3-4b,llamagate,128000.0,0.05
+openrouter/nex-agi/nex-n2.5-mini,nex-n2.5-mini,openrouter,262144.0,0.05
+bedrock_mantle/google.gemma-4-e2b,google.gemma-4-e2b,bedrock_mantle,128000.0,0.06
+google.gemma-3-4b-it,google.gemma-3-4b-it,bedrock_converse,128000.0,0.06
+openrouter/qwen/qwen3.7-flash,qwen3.7-flash,openrouter,1000000.0,0.0625
+aihubmix/agnes-2.5-flash,agnes-2.5-flash,aihubmix,512000.0,0.0675
+novita/zai-org/autoglm-phone-9b-multilingual,autoglm-phone-9b-multilingual,novita,65536.0,0.0695
