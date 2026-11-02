@@ -1,1 +1,1 @@
-# proyecto-miner-a
+# proyecto minería
