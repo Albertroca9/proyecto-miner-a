@@ -47,8 +47,8 @@ def _feature_matrix(frame: pd.DataFrame, include_prices: bool) -> np.ndarray:
     return matrix.to_numpy(dtype=float)
 
 
-def evaluate_classifier(frame: pd.DataFrame) -> dict:
-    train_idx, test_idx = make_group_split(frame)
+def evaluate_classifier(frame: pd.DataFrame, random_state: int = 7) -> dict:
+    train_idx, test_idx = make_group_split(frame, random_state=random_state)
     train, test = frame.iloc[train_idx], frame.iloc[test_idx]
     y_train, y_test, thresholds = price_bands(
         train["example_cost_usd"].to_numpy(), test["example_cost_usd"].to_numpy()
@@ -58,7 +58,7 @@ def evaluate_classifier(frame: pd.DataFrame) -> dict:
     imputer = SimpleImputer(strategy="median", keep_empty_features=True)
     x_train = imputer.fit_transform(x_train)
     x_test = imputer.transform(x_test)
-    model = RandomForestClassifier(n_estimators=150, min_samples_leaf=4, random_state=7, n_jobs=1)
+    model = RandomForestClassifier(n_estimators=150, min_samples_leaf=4, random_state=random_state, n_jobs=1)
     baseline = DummyClassifier(strategy="most_frequent")
     model.fit(x_train, y_train)
     baseline.fit(x_train, y_train)

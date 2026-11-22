@@ -1,6 +1,31 @@
-# El precio de la inteligencia — avance
+# El precio de la inteligencia — proyecto final
 
-Proyecto de Minería de Datos sobre tarifas de modelos de IA. Este repositorio contiene una primera entrega reproducible: preparación de datos, análisis temporal, clustering, clasificación de tramos tarifarios y un recomendador por requisitos y coste.
+Proyecto de Minería de Datos sobre tarifas de modelos de IA. Contiene el avance original y una evaluación final reproducible: serie temporal fuera de tiempo, comparación frente a baselines, dinámica del catálogo, clasificación repetida, clustering y un recomendador por requisitos y coste.
+
+## Entrega final: ejecución rápida
+
+Desde la raíz de este directorio de trabajo, con Python 3.10 o posterior:
+
+```powershell
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests -v
+python -m scripts.run_avance
+python -m scripts.run_final
+python -m streamlit run streamlit_app.py
+```
+
+El último comando inicia la demo. Su recorrido está en [`docs/demo_final.md`](docs/demo_final.md), y el guion del vídeo en [`docs/guion_final_5_min.md`](docs/guion_final_5_min.md). La presentación editable está en `output/entrega_final_2026-11-23.pptx`.
+
+### Resultados finales y cómo interpretarlos
+
+`results/final/evaluation.json` contiene las métricas; `temporal_predictions.csv`, `catalog_dynamics.csv` y `classification_splits.csv` permiten auditarlas. Hay dos gráficos en el mismo directorio.
+
+- **Serie temporal:** se predice la mediana semanal del coste de 1 M de tokens de entrada y 0,25 M de salida. Se reservan las últimas 26 semanas; cada predicción usa solo semanas anteriores. La regresión con tendencia y retardos obtiene MAE de **0,0381 USD** y sMAPE de **3,91 %**. La persistencia de la última mediana obtiene **0,0145 USD** y **1,46 %**. El baseline es mejor en esta prueba.
+- **Dinámica:** en 156 transiciones entre semanas observadas sucesivas hubo **519** modificaciones de tarifa de entrada en **135.928** comparaciones de listados continuadores (**0,382 %**). Se observaron **3.905** eventos de entrada a la cohorte elegible; una entrada puede ser un listado ya existente que antes no cumplía el filtro. La comparación es descriptiva y no asigna causalmente la caída de la mediana a esas entradas.
+- **Clasificación:** en cinco separaciones por `model_name`, el bosque aleatorio obtiene macro-F1 medio **0,594** (DE 0,020), frente a **0,158** (DE 0,016) de la clase mayoritaria. Los umbrales de franja y la imputación se calculan solo con entrenamiento en cada partición. Las cinco particiones no son intervalos de confianza.
+- **Clustering:** tres grupos seleccionados por silhouette (**0,266**) ayudan a describir perfiles de coste, contexto y capacidades; la métrica no evalúa utilidad comercial.
+
+El catálogo no contiene benchmark de calidad, latencia ni disponibilidad. Por ello, el recomendador encuentra el menor **precio de lista** entre los listados que cumplen los requisitos indicados; no mide calidad-precio. `developer_country` indica país del desarrollador, no del proveedor, y una diferencia entre países no demuestra causalidad. Tampoco existe una definición verificable de «IA de frontera» en estos CSV, por lo que no se extrapola una fecha para 0,10 USD.
 
 ## Reproducir el avance
 
@@ -50,9 +75,9 @@ El archivo `LICENSE_LiteLLM_source_data.txt` acompaña las fuentes facilitadas. 
 
 **Tiempo y geografía.** Las medianas de cada semana incluyen modelos diferentes, por lo que sus cambios no equivalen a rebajas de un mismo modelo. Se calculan por separado cambios entre observaciones sucesivas del mismo `model_id`. La comparación entre países es descriptiva y está afectada por diferencias de gama, capacidades y proveedores; no permite una conclusión causal.
 
-## Próxima entrega
+## Evolución del avance al final
 
-Para la entrega final: evaluar predicción temporal frente a una tarifa persistente como baseline, profundizar en rebajas de modelos existentes frente a entrada de nuevos modelos, consolidar la demo y validar la utilidad del ranking. El umbral de 0,10 USD para «IA de frontera» requiere primero una definición medible de frontera; el archivo actual no tiene benchmarks de calidad.
+El avance dejó preparado el tratamiento de datos, los primeros experimentos y el recomendador. La entrega final añade prueba cronológica con baseline, cinco particiones para clasificación, seguimiento explícito de entradas y cambios de tarifa, y tres vistas en la demo. El ranking se valida como cálculo y filtro reproducible; su utilidad subjetiva o su calidad de respuesta no se pueden evaluar con los CSV disponibles.
 
 El guion y la estructura de diapositivas para el vídeo de avance están en [`docs/avance_video_4_min.md`](docs/avance_video_4_min.md).
 La presentación editable de cinco diapositivas está en [`output/avance_proyecto_2026-11-01.pptx`](output/avance_proyecto_2026-11-01.pptx); incluye el texto de locución en las notas del presentador.

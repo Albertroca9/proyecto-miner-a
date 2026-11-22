@@ -3,7 +3,7 @@ import unittest
 import numpy as np
 import pandas as pd
 
-from avance.models import CLASSIFICATION_FEATURES, make_group_split, price_bands
+from avance.models import CLASSIFICATION_FEATURES, evaluate_classifier, make_group_split, price_bands
 
 
 class ModelDesignTests(unittest.TestCase):
@@ -22,3 +22,10 @@ class ModelDesignTests(unittest.TestCase):
         self.assertLess(thresholds[1], 6.0)
         self.assertEqual(test_labels.tolist(), [2])
         self.assertEqual(len(train_labels), 6)
+
+    def test_classifier_accepts_seed_for_repeated_group_splits(self):
+        frame = pd.DataFrame({name: [float(i % 2) for i in range(20)] for name in CLASSIFICATION_FEATURES})
+        frame["model_name"] = [f"model-{i}" for i in range(20)]
+        frame["example_cost_usd"] = np.arange(1.0, 21.0)
+        result = evaluate_classifier(frame, random_state=11)
+        self.assertEqual(result["train_rows"] + result["test_rows"], 20)
