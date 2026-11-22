@@ -1,0 +1,44 @@
+{
+  "temporal": {
+    "holdout_weeks": 26,
+    "first_test_week": "2026-04-06",
+    "last_test_week": "2026-09-28",
+    "regression": {
+      "mae_usd": 0.038050107412560846,
+      "smape_pct": 3.907606120070088
+    },
+    "persistence": {
+      "mae_usd": 0.014519230769230767,
+      "smape_pct": 1.4599242902221374
+    }
+  },
+  "classification_repeated": {
+    "splits": 5,
+    "model_macro_f1": {
+      "mean": 0.5940669983259124,
+      "std": 0.020208775907693564
+    },
+    "baseline_macro_f1": {
+      "mean": 0.15830093789378813,
+      "std": 0.01579924962131304
+    },
+    "model_accuracy": {
+      "mean": 0.5988152431261529,
+      "std": 0.025682961349752804
+    },
+    "baseline_accuracy": {
+      "mean": 0.31241762808417456,
+      "std": 0.041260741307045073
+    }
+  },
+  "catalog_dynamics": {
+    "weekly_transitions": 156,
+    "entrant_events": 3905,
+    "continuing_listing_weeks": 135928,
+    "input_price_change_events": 519,
+    "change_share_of_continuing_pct": 0.38181978694603025,
+    "first_week_median_example_cost_usd": 3.0075,
+    "last_week_median_example_cost_usd": 1.1,
+    "last_week_entrants": 42
+  }
+}
