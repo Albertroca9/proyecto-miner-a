@@ -16,7 +16,7 @@ python -m streamlit run streamlit_app.py
 
 El último comando inicia la demo. Su recorrido está en [`docs/demo_final.md`](docs/demo_final.md), y el guion del vídeo en [`docs/guion_final_5_min.md`](docs/guion_final_5_min.md). La presentación editable está en `output/entrega_final_2026-11-23.pptx`.
 
-La [guía final para compartir con el equipo](output/pdf/guia_entrega_final_equipo.pdf) reúne el método, las métricas, el texto del vídeo, la demo y las respuestas a preguntas.
+La [guía completa de defensa para el equipo](output/pdf/guia_defensa_completa_equipo.pdf) reúne el método, las métricas, el texto íntegro del vídeo, el recorrido de la demo y las respuestas a preguntas difíciles. También se conserva la [guía breve de entrega](output/pdf/guia_entrega_final_equipo.pdf).
 
 ### Resultados finales y cómo interpretarlos
 
