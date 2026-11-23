@@ -10,9 +10,9 @@ class FinalDemoTests(unittest.TestCase):
         self.assertEqual(len(app.exception), 0)
         self.assertEqual([tab.label for tab in app.tabs], ["Recomendador", "Evolución", "Evaluación"])
         self.assertGreaterEqual(len(app.dataframe), 1)
-        app.number_input[2].set_value(128_000).run()
+        app.number_input[2].set_value(256_000).run()
         self.assertEqual(len(app.exception), 0)
-        self.assertEqual(app.number_input[2].value, 128_000)
+        self.assertEqual(app.number_input[2].value, 256_000)
 
 
 if __name__ == "__main__":
